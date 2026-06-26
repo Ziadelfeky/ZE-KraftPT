@@ -202,6 +202,9 @@ select{background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/
       <div class="pills" id="p-membership"></div>
       <span class="err-msg" id="e-membership"></span>
     </div>
+    <div class="note" id="vip-note" style="display:none">
+      <strong>VIP 1-on-1</strong> — Exclusive 60-minute private sessions with Coach Ziad. Full program, app access, and direct coaching. Available by request only. Our most premium package.
+    </div>
     <div class="row">
       <div class="field">
         <label class="lbl">Sessions per week <span class="req">*</span></label>
@@ -510,7 +513,7 @@ function initScale() {
 function initAllPills() {
   initPills('p-member-type', ['New member','Returning member'], false);
   initPills('p-away-duration', ['Less than 1 month','1–3 months','3–6 months','6+ months'], false);
-  initPills('p-membership', ['Personal Training (1-on-1)','Semi-private (small group)','Group class','Open gym only'], false);
+  initPills('p-membership', ['VIP 1-on-1 (by request)','Private Training','Semi-private','Group class','Open gym only'], false);
   initPills('p-session-time', ['Early morning (6–9am)','Morning (9am–12pm)','Afternoon (12–5pm)','Evening (5–9pm)'], false);
   initPills('p-exp', ['No experience','Less than 1 year','1–2 years','2–4 years','4+ years'], false);
   initPills('p-train-type', ['Strength / Weights','HIIT','Cardio','Yoga / Pilates','Sport','Calisthenics','CrossFit','None'], true);
@@ -802,6 +805,13 @@ window.addEventListener('DOMContentLoaded', function() {
   initAllPills();
   document.getElementById('p-member-type').addEventListener('click', function() {
     setTimeout(handleMemberType, 50);
+  });
+  document.getElementById('p-membership').addEventListener('click', function() {
+    setTimeout(function() {
+      var v = getPill('p-membership');
+      var note = document.getElementById('vip-note');
+      if (note) note.style.display = v === 'VIP 1-on-1 (by request)' ? 'block' : 'none';
+    }, 50);
   });
 });
 </script>
