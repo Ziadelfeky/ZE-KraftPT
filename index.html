@@ -59,7 +59,7 @@ select{background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/
 .medical-box{background:#fff8f0;border:1px solid #f0d8b8;border-radius:9px;padding:16px 18px;margin-bottom:16px;}
 .medical-box-title{font-size:12px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--gold-dark);margin-bottom:4px;}
 .medical-box p{font-size:12.5px;color:var(--mid);line-height:1.6;}
-.day-grid{display:grid;grid-template-columns:repeat(7,1fr);gap:6px;}
+.day-grid{display:grid;grid-template-columns:repeat(6,1fr);gap:6px;}
 .day-btn{background:var(--white);border:1px solid var(--rule);border-radius:7px;padding:10px 4px;font-size:12px;font-weight:500;text-align:center;cursor:pointer;-webkit-tap-highlight-color:transparent;transition:all .13s;}
 .day-btn.on{background:var(--ink);color:#fff;border-color:var(--ink);}
 .submit-wrap{display:flex;flex-direction:column;align-items:center;gap:12px;margin-top:10px;}
@@ -106,7 +106,7 @@ select{background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/
   .row{grid-template-columns:1fr;}
   .row3{grid-template-columns:1fr 1fr;}
   .scale-btn{width:34px;height:34px;font-size:12px;}
-  .day-grid{grid-template-columns:repeat(4,1fr);}
+  .day-grid{grid-template-columns:repeat(3,1fr);}
 }
 .client-card.unread{border-color:var(--gold);background:var(--gold-faint);}
 .client-card.unread .client-name::after{content:'New';display:inline-block;margin-left:8px;font-size:10px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:#fff;background:var(--gold);padding:2px 7px;border-radius:10px;vertical-align:2px;}
@@ -289,7 +289,7 @@ input::placeholder,textarea::placeholder{color:#6b665d;}
       </div>
     </div>
     <div class="field">
-      <label class="lbl">Preferred training days <span class="hint">— select all that apply</span></label>
+      <label class="lbl">Preferred training days <span class="hint">— select all that apply · Kraft is closed on Fridays</span></label>
       <div class="day-grid" id="day-grid"></div>
     </div>
 
@@ -550,7 +550,7 @@ var TIERS = [
     format: '1-on-1 · with Coach Ziad',
     who: 'Only you in the slot — Ziad\'s full attention',
     from: '550',
-    desc: 'The most exclusive coaching experience at Kraft. No shared time, no interruptions — 60 minutes of direct access to Coach Ziad every session. Fully individualized program, direct WhatsApp access, and your own training app updated weekly by Coach Ziad.',
+    desc: 'The most exclusive coaching experience at Kraft. No shared time, no interruptions — 60 minutes of direct access to Coach Ziad every session, a fully individualized program, and direct WhatsApp access. Traveling or away for a while? Your program moves to the training app so you keep training online without losing progress — a benefit exclusive to VIP.',
     pkgs: [['VIP 8', '2× / week', '4,800 LE'], ['VIP 12', '3× / week', '6,900 LE'], ['VIP 16', '4× / week', '8,800 LE']],
     foot: 'Reserved for a very limited number of clients.'
   },
@@ -622,7 +622,7 @@ function initTiers() {
 
 function initDayGrid() {
   dayState = [];
-  var days = ['Mon','Tue','Wed','Thu','Fri','Sat','Sun'];
+  var days = ['Sat','Sun','Mon','Tue','Wed','Thu'];
   var el = document.getElementById('day-grid');
   if (!el) return;
   el.innerHTML = '';
