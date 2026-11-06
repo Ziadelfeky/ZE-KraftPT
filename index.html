@@ -154,6 +154,7 @@ input::placeholder,textarea::placeholder{color:#6b665d;}
 .tier-who{font-size:12px;color:var(--mid);margin-top:2px;line-height:1.5;}
 .tier-price{text-align:right;flex-shrink:0;line-height:1.15;}
 .tier-price small{display:block;font-size:10px;color:var(--soft);letter-spacing:.04em;}
+.tier-price .tier-pk{margin-top:2px;color:var(--gold-dark);font-weight:500;}
 .tier-price b{display:block;font-family:'Lora',Georgia,serif;font-size:21px;font-weight:500;color:var(--gold-dark);}
 .tier-detail{display:none;margin-top:14px;padding-top:12px;border-top:1px solid var(--rule);}
 .tier.on .tier-detail{display:block;}
@@ -269,7 +270,7 @@ input::placeholder,textarea::placeholder{color:#6b665d;}
       <p class="tier-intro">Three ways to train with Kraft. The fee depends on two things: whether you train alone or share the session, and whether Coach Ziad or his associate coach is with you on the floor.</p>
       <div class="tiers" id="p-membership" role="radiogroup" aria-label="Membership type"></div>
       <span class="err-msg" id="e-membership"></span>
-      <p class="tier-note">All packages are valid for 4 weeks. Not sure which fits? Pick the closest — Coach Ziad will confirm the right level with you.</p>
+      <p class="tier-note">Per-session prices apply inside a package. All packages are valid for 4 weeks. Not sure which fits? Pick the closest — Coach Ziad will confirm the right level with you.</p>
     </div>
 
     <div class="row">
@@ -562,7 +563,7 @@ var TIERS = [
     who: 'Shared session, your own program — not a class',
     from: '270',
     desc: 'Up to 3–4 clients train in the same session, but each follows their own individualized program built around their own goals — nobody follows a group workout. Coach Ziad coaches every client directly throughout the session.',
-    pkgs: [['8 sessions', '2× / week', '2,400 LE'], ['12 sessions', '3× / week', '3,600 LE'], ['16 sessions', '4× / week', '4,500 LE'], ['20 sessions', '5× / week', '5,400 LE']],
+    pkgs: [['1 session', 'trial or top-up', '400 LE'], ['8 sessions', '2× / week', '2,400 LE'], ['12 sessions', '3× / week', '3,600 LE'], ['16 sessions', '4× / week', '4,500 LE'], ['20 sessions', '5× / week', '5,400 LE']],
     foot: 'Sessions are scheduled in advance — a commitment to your progress, not a drop-in service.'
   },
   {
@@ -600,7 +601,7 @@ function initTiers() {
           '<div class="tier-format">' + t.format + '</div>' +
           '<div class="tier-who">' + t.who + '</div>' +
         '</div>' +
-        '<div class="tier-price"><small>from</small><b>' + t.from + '</b><small>LE / session</small></div>' +
+        '<div class="tier-price"><small>from</small><b>' + t.from + '</b><small>LE / session</small><small class="tier-pk">in a package</small></div>' +
       '</div>' +
       '<div class="tier-detail"><p>' + t.desc + '</p><div class="pkgs">' + pk + '</div>' +
         (t.foot ? '<div class="tier-foot">' + t.foot + '</div>' : '') +
