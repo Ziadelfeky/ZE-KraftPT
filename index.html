@@ -136,8 +136,34 @@ input::placeholder,textarea::placeholder{color:#6b665d;}
 .payment-banner{background:var(--white) !important;border:1px solid var(--rule);}
 .badge-new{background:#14212c !important;color:#8cc4ec !important;}
 .badge-ret{background:var(--green-bg) !important;color:var(--green) !important;}
-#desc-vip,#desc-private{background:var(--gold-faint) !important;border-color:rgba(201,169,110,.35) !important;}
-#desc-vip p,#desc-private p{color:var(--mid) !important;}
+/* Membership tiers */
+.tier-intro{font-size:12.5px;color:var(--mid);margin:2px 0 6px;line-height:1.6;}
+.tier-note{font-size:11.5px;color:var(--soft);margin-top:2px;line-height:1.6;}
+.tiers{display:flex;flex-direction:column;gap:10px;}
+.tier{background:var(--white);border:1px solid var(--rule);border-radius:10px;padding:15px 16px;cursor:pointer;transition:border-color .14s,background .14s;-webkit-tap-highlight-color:transparent;outline:none;}
+.tier:focus-visible{border-color:var(--gold);}
+.tier.on{border-color:var(--gold);background:var(--gold-faint);}
+.tier-top{display:flex;align-items:flex-start;gap:12px;}
+.tier-dot{width:16px;height:16px;border-radius:50%;border:1.5px solid var(--soft);flex-shrink:0;margin-top:4px;position:relative;transition:border-color .14s;}
+.tier.on .tier-dot{border-color:var(--gold);}
+.tier.on .tier-dot::after{content:'';position:absolute;inset:3px;border-radius:50%;background:var(--gold);}
+.tier-main{flex:1;min-width:0;}
+.tier-name{font-family:'Lora',Georgia,serif;font-size:17px;font-weight:500;line-height:1.3;}
+.tier-tag{display:inline-block;font-family:'Poppins',sans-serif;font-size:9.5px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:var(--gold);border:1px solid rgba(201,169,110,.45);border-radius:10px;padding:1px 8px;margin-left:6px;vertical-align:2px;}
+.tier-format{font-size:12.5px;font-weight:500;color:var(--gold-dark);margin-top:4px;line-height:1.45;}
+.tier-who{font-size:12px;color:var(--mid);margin-top:2px;line-height:1.5;}
+.tier-price{text-align:right;flex-shrink:0;line-height:1.15;}
+.tier-price small{display:block;font-size:10px;color:var(--soft);letter-spacing:.04em;}
+.tier-price b{display:block;font-family:'Lora',Georgia,serif;font-size:21px;font-weight:500;color:var(--gold-dark);}
+.tier-detail{display:none;margin-top:14px;padding-top:12px;border-top:1px solid var(--rule);}
+.tier.on .tier-detail{display:block;}
+.tier-detail p{font-size:13px;color:var(--mid);line-height:1.75;}
+.pkgs{margin-top:10px;}
+.pkg{display:flex;justify-content:space-between;align-items:baseline;gap:10px;font-size:13px;padding:7px 0;border-bottom:1px dashed var(--rule);}
+.pkg:last-child{border-bottom:none;}
+.pkg em{font-style:normal;color:var(--soft);font-size:11.5px;margin-left:6px;}
+.pkg-price{color:var(--ink);font-weight:500;white-space:nowrap;}
+.tier-foot{font-size:12px;color:var(--gold-dark);margin-top:8px;font-style:italic;line-height:1.6;}
 .clothing-radio-dot{background:#15120e !important;}
 /* Coach hub */
 .tile.primary{background:var(--gold-faint) !important;border-color:var(--gold) !important;color:var(--ink) !important;}
@@ -240,21 +266,12 @@ input::placeholder,textarea::placeholder{color:#6b665d;}
     <div class="sec-hdr"><span class="sec-num">03</span><span class="sec-title">Membership</span></div>
     <div class="field">
       <label class="lbl">Membership type <span class="req">*</span></label>
-      <p style="font-size:12px;color:var(--soft);margin-bottom:8px;margin-top:2px;">Not sure which is right for you? Fill in the form and we'll guide you.</p>
-      <div class="pills" id="p-membership"></div>
+      <p class="tier-intro">Three ways to train with Kraft. The fee depends on two things: whether you train alone or share the session, and whether Coach Ziad or his associate coach is with you on the floor.</p>
+      <div class="tiers" id="p-membership" role="radiogroup" aria-label="Membership type"></div>
       <span class="err-msg" id="e-membership"></span>
+      <p class="tier-note">All packages are valid for 4 weeks. Not sure which fits? Pick the closest — Coach Ziad will confirm the right level with you.</p>
     </div>
-    <div id="desc-vip" style="display:none;background:#fbf7f0;border:1px solid #e8d5b0;border-radius:10px;padding:18px 20px;margin-top:4px;">
-      <div style="font-size:11px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:#b8966a;margin-bottom:8px;">VIP 1-on-1 — By Request Only</div>
-      <p style="font-size:13.5px;color:#333;line-height:1.75;">The most exclusive coaching experience at Kraft. Just you and Coach Ziad — no shared time, no interruptions. You have 60 minutes of direct access to your coach every session. Fully individualized program, direct WhatsApp access, and your own professional training app updated weekly by Coach Ziad.</p>
-      <p style="font-size:13px;color:#9a7c52;margin-top:10px;font-style:italic;font-weight:500;">For clients who are serious about results and want the full Kraft experience. Reserved for a very limited number of clients.</p>
-    </div>
-    <div id="desc-private" style="display:none;background:#fbf7f0;border:1px solid #e8d5b0;border-radius:10px;padding:18px 20px;margin-top:4px;">
-      <div style="font-size:11px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:#b8966a;margin-bottom:8px;">Private Training</div>
-      <p style="font-size:13.5px;color:#333;line-height:1.75;">Personal coaching with full individualization. Up to 3–4 clients train at the same time, but each has their own program, their own goals, and direct coaching from Ziad throughout every session. Not a group class — your program is built entirely around you.</p>
-      <p style="font-size:13px;color:#9a7c52;margin-top:10px;font-style:italic;font-weight:500;">Sessions are scheduled in advance — this is a commitment to your progress, not a drop-in service.</p>
-    </div>
-    
+
     <div class="row">
       <div class="field">
         <label class="lbl">Sessions per week <span class="req">*</span></label>
@@ -431,7 +448,7 @@ input::placeholder,textarea::placeholder{color:#6b665d;}
       <div class="next-item"><span class="next-num">3.</span>Program built around you from session one</div>
     </div>
     <div style="background:var(--gold-faint);border:1px solid var(--rule);border-radius:10px;padding:14px 18px;width:100%;margin-top:4px;">
-      <div style="font-size:12px;color:var(--mid);line-height:1.65;"><strong style="color:var(--ink);">Pricing &amp; packages</strong> will be shared with you directly by Coach Ziad once your form is reviewed.</div>
+      <div style="font-size:12px;color:var(--mid);line-height:1.65;"><strong style="color:var(--ink);">Your package</strong> and schedule are confirmed with Coach Ziad before your first session.</div>
     </div>
     <button onclick="resetForm()" style="font-size:12px;color:var(--soft);background:none;border:none;cursor:pointer;text-decoration:underline;">Submit another response</button>
   </div>
@@ -524,6 +541,85 @@ function togglePill(id, val, multi, btn) {
 
 function getPill(id) { return pillState[id]; }
 
+// Membership tiers. "value" is what gets saved, so keep existing values unchanged.
+var TIERS = [
+  {
+    value: 'VIP 1-on-1 (by request)',
+    name: 'VIP 1-on-1',
+    tag: 'By request',
+    format: '1-on-1 · with Coach Ziad',
+    who: 'Only you in the slot — Ziad\'s full attention',
+    from: '550',
+    desc: 'The most exclusive coaching experience at Kraft. No shared time, no interruptions — 60 minutes of direct access to Coach Ziad every session. Fully individualized program, direct WhatsApp access, and your own training app updated weekly by Coach Ziad.',
+    pkgs: [['VIP 8', '2× / week', '4,800 LE'], ['VIP 12', '3× / week', '6,900 LE'], ['VIP 16', '4× / week', '8,800 LE']],
+    foot: 'Reserved for a very limited number of clients.'
+  },
+  {
+    value: 'Private Training',
+    name: 'Semi-Private Training',
+    tag: '',
+    format: 'Up to 3–4 clients · with Coach Ziad',
+    who: 'Shared session, your own program — not a class',
+    from: '270',
+    desc: 'Up to 3–4 clients train in the same session, but each follows their own individualized program built around their own goals — nobody follows a group workout. Coach Ziad coaches every client directly throughout the session.',
+    pkgs: [['8 sessions', '2× / week', '2,400 LE'], ['12 sessions', '3× / week', '3,600 LE'], ['16 sessions', '4× / week', '4,500 LE'], ['20 sessions', '5× / week', '5,400 LE']],
+    foot: 'Sessions are scheduled in advance — a commitment to your progress, not a drop-in service.'
+  },
+  {
+    value: 'Associate Coaching',
+    name: 'Associate Coaching',
+    tag: '',
+    format: '1-on-1 · with Kraft\'s associate coach',
+    who: 'Program designed and supervised by Coach Ziad',
+    from: '200',
+    desc: 'One-on-one coaching at a more accessible rate. Coach Ziad designs your program, and every session is coached 1-on-1 by Kraft\'s associate coach under Ziad\'s supervision — the same assessment-led system, with a dedicated coach beside you.',
+    pkgs: [['8 sessions', '2× / week', '1,800 LE'], ['12 sessions', '3× / week', '2,700 LE'], ['16 sessions', '4× / week', '3,400 LE'], ['20 sessions', '5× / week', '4,000 LE']],
+    foot: 'You can move up to Semi-Private or VIP at any renewal.'
+  }
+];
+
+function initTiers() {
+  pillState['p-membership'] = '';
+  var el = document.getElementById('p-membership');
+  if (!el) return;
+  el.innerHTML = '';
+  TIERS.forEach(function(t) {
+    var card = document.createElement('div');
+    card.className = 'tier';
+    card.tabIndex = 0;
+    card.setAttribute('role', 'radio');
+    card.setAttribute('aria-checked', 'false');
+    var pk = t.pkgs.map(function(p) {
+      return '<div class="pkg"><span>' + p[0] + '<em>' + p[1] + '</em></span><span class="pkg-price">' + p[2] + '</span></div>';
+    }).join('');
+    card.innerHTML =
+      '<div class="tier-top">' +
+        '<span class="tier-dot"></span>' +
+        '<div class="tier-main">' +
+          '<div class="tier-name">' + t.name + (t.tag ? '<span class="tier-tag">' + t.tag + '</span>' : '') + '</div>' +
+          '<div class="tier-format">' + t.format + '</div>' +
+          '<div class="tier-who">' + t.who + '</div>' +
+        '</div>' +
+        '<div class="tier-price"><small>from</small><b>' + t.from + '</b><small>LE / session</small></div>' +
+      '</div>' +
+      '<div class="tier-detail"><p>' + t.desc + '</p><div class="pkgs">' + pk + '</div>' +
+        (t.foot ? '<div class="tier-foot">' + t.foot + '</div>' : '') +
+      '</div>';
+    function pick() {
+      pillState['p-membership'] = t.value;
+      el.querySelectorAll('.tier').forEach(function(c) { c.classList.remove('on'); c.setAttribute('aria-checked', 'false'); });
+      card.classList.add('on');
+      card.setAttribute('aria-checked', 'true');
+      document.getElementById('e-membership').textContent = '';
+    }
+    card.addEventListener('click', pick);
+    card.addEventListener('keydown', function(e) {
+      if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); pick(); }
+    });
+    el.appendChild(card);
+  });
+}
+
 function initDayGrid() {
   dayState = [];
   var days = ['Mon','Tue','Wed','Thu','Fri','Sat','Sun'];
@@ -567,7 +663,7 @@ function initScale() {
 function initAllPills() {
   initPills('p-member-type', ['New member','Returning member'], false);
   initPills('p-away-duration', ['Less than 1 month','1–3 months','3–6 months','6+ months'], false);
-  initPills('p-membership', ['VIP 1-on-1 (by request)','Private Training'], false);
+  initTiers();
   initPills('p-session-time', ['Early morning (6–9am)','Morning (9am–12pm)','Afternoon (12–5pm)','Evening (5–9pm)'], false);
   initPills('p-exp', ['No experience','Less than 1 year','1–2 years','2–4 years','4+ years'], false);
   initPills('p-train-type', ['Strength / Weights','HIIT','Cardio','Yoga / Pilates','Sport','Calisthenics','CrossFit','None'], true);
@@ -895,15 +991,6 @@ window.addEventListener('DOMContentLoaded', function() {
   initAllPills();
   document.getElementById('p-member-type').addEventListener('click', function() {
     setTimeout(handleMemberType, 50);
-  });
-  document.getElementById('p-membership').addEventListener('click', function() {
-    setTimeout(function() {
-      var v = getPill('p-membership');
-      var vip = document.getElementById('desc-vip');
-      var priv = document.getElementById('desc-private');
-      if (vip) vip.style.display = v === 'VIP 1-on-1 (by request)' ? 'block' : 'none';
-      if (priv) priv.style.display = v === 'Private Training' ? 'block' : 'none';
-    }, 50);
   });
 });
 
